@@ -13,7 +13,7 @@ export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [characters, setCharacters] = useState([])
   const [name, setName] = useState('')
-  const [locatin, setLocation] = useState('')
+  const [location, setLocation] = useState('')
   const [origin, setOrigin] = useState('')
   const [species, setSpies] = useState('')
   const [status, setStatus] = useState('')
@@ -24,10 +24,10 @@ export default function CharacterList() {
     // TODO: Add AJAX/API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios
-    .get(`https://rickandmortyapi.com/api/character`)
+    .get(`https://rickandmortyapi.com/api/character/`)
     .then(response => {
       const character = response.data.results
-      console.log('charactor', character)
+      // console.log('charactor', character)
       setCharacters(character)
       setName(response.data.results[0].name)
       setLocation(response.data.results[0].location.name)
@@ -47,17 +47,17 @@ export default function CharacterList() {
             <Card.Content>
             <Image src={item.image} wrapped ui={true} />
               <Card.Header>
-                <CharactorCard name={item.name} key={id}/>
+                <CharactorCard name={item.name} key={Math.random()}/>
               </Card.Header>
               <Card.Meta>
-                <SpeciesCharactor species={item.species} key={id}/>
-                <StatusCharactor status={item.status} key={id}/>
+                <SpeciesCharactor species={item.species} key={Math.random()}/>
+                <StatusCharactor status={item.status} key={Math.random()}/>
               </Card.Meta>
               <Card.Description>
-                <LocationCharactor location={item.location.name} key={id} />
+                <LocationCharactor location={item.location.name} key={Math.random()} />
               </Card.Description>
               <Card.Description>
-                <OriginCharactor origin={item.origin.name} key={id}/>
+                <OriginCharactor origin={item.origin.name} key={Math.random()}/>
               </Card.Description>
             </Card.Content>
           </Card>
